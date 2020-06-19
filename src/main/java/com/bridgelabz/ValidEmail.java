@@ -10,7 +10,7 @@ public class ValidEmail {
      * @param email
      * @return
      */
-    public boolean ValidateEmail(String email) {
+    public boolean validateEmail(String email) {
         Pattern pattern=Pattern.compile(EMAILADDRESS);
         return pattern.matcher(email).matches();
     }
