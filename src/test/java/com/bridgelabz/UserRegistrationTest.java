@@ -85,7 +85,7 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void checkMobileNumber_NotProvidedCountry_ShouldReturnFalse() {
+    public void checkMobileNumber_NotProvidedCountryCode_ShouldReturnFalse() {
         UserRegistration validater = new UserRegistration();
         boolean result = validater.validateMobileNumber("8600250537");
         Assert.assertEquals(true, result);
@@ -94,36 +94,47 @@ public class UserRegistrationTest {
     @Test
     public void checkMobileNumber_IncompleteNumber_ShouldReturnFalse() {
         UserRegistration validater = new UserRegistration();
-        boolean result = validater.validateMobileNumber("91 8600237999");
+        boolean result = validater.validateMobileNumber("91 8699");
         Assert.assertEquals(true, result);
     }
     //============================PASSWORD==================================
-
+    //Valid Password
     @Test
     public void checkPassword_ValidPassword_ShouldReturnTrue() {
         UserRegistration validater = new UserRegistration();
-        boolean result = validater.validatePasswprd("Surabh$123");
+        boolean result = validater.validatePasswprd("Saurabh@123");
         Assert.assertEquals(true, result);
     }
 
+    //Rule1 Minimum 8 Charecter
     @Test
-    public void checkPassword_NotValid_ShouldReturnFalse() {
+    public void Rule1checkPassword_Minimum8Charecters_ShouldReturnFalse() {
         UserRegistration validater = new UserRegistration();
         boolean result = validater.validatePasswprd("123");
         Assert.assertEquals(true, result);
     }
 
+    //Rule2 Should Have One Uppercase
     @Test
-    public void checkPassword_NotNumber_ShouldReturnFalse() {
+    public void checkPassword_ShouldHaveOneUppercase_ShouldReturnFalse() {
+        UserRegistration validater = new UserRegistration();
+        boolean result = validater.validatePasswprd("saurabh@");
+        Assert.assertEquals(true, result);
+    }
+
+    //Rule3 Should Have One Numeric
+    @Test
+    public void checkPassword_ShouldOneNumericNumber_ShouldReturnFalse() {
         UserRegistration validater = new UserRegistration();
         boolean result = validater.validatePasswprd("Saurabh@");
         Assert.assertEquals(true, result);
     }
 
+    //Rule4 Exact One Special Charecter
     @Test
-    public void checkPassword_NotUpperCase_ShouldReturnFalse() {
+    public void checkPassword_ExactlyOneSpeCialCharecter_ShouldReturnFalse() {
         UserRegistration validater = new UserRegistration();
-        boolean result = validater.validatePasswprd("saurabh@123");
+        boolean result = validater.validatePasswprd("Saurabh@@123");
         Assert.assertEquals(true, result);
     }
 

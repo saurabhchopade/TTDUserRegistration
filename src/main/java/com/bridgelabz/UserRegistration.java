@@ -5,12 +5,11 @@ import java.util.regex.Pattern;
 public class UserRegistration {
 
     //All Regx Patterns
-    String FIRSTNAMEPATTERN = "^[A-Z]{1}[a-z]{3,}$";
-    String LASTNAMEPATTERN = "^[A-Z]{1}[a-z]{3,}$";
+    String FIRSTNAMEPATTERN = "^[A-Z]{1}[a-z]{2,}$";
+    String LASTNAMEPATTERN = "^[A-Z]{1}[a-z]{2,}$";
     String EMAILADDRESS = "^[a-z0-9]+[\\.\\-\\+]?[a-z0-9]+[\\@][a-z0-9]{1,}[\\.][a-z]+([\\.]?[a-z]+)$";
-    String MOBILENUMBERPATTERN = "^(91)[ ][0-9]{10}$";
-    String PASSWORDPATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,}$";
-
+    String MOBILENUMBERPATTERN = "^[0-9]{1,2}[ ][0-9]{10}$";
+    String PASSWORDPATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{4,}[\\@\\#][a-zA-Z0-9]*$";
     /**
      *
      * @param firstName
@@ -57,7 +56,7 @@ public class UserRegistration {
      * @return
      */
     public boolean validatePasswprd(String password) {
-        Pattern pattern=Pattern.compile(PASSWORDPATTERN);
+        Pattern pattern = Pattern.compile(PASSWORDPATTERN);
         return pattern.matcher(password).matches();
     }
 }
